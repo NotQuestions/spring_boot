@@ -20,7 +20,7 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false, length = 270)
-    @UniqueMovieTitle
+//    @UniqueMovieTitle
     private String title;
     @Positive
     private int duration;

@@ -2,6 +2,7 @@ package com.okten.spring.test.spring_boot.service;
 
 import com.okten.spring.test.spring_boot.dao.MovieDao;
 import com.okten.spring.test.spring_boot.entity.Movie;
+import com.okten.spring.test.spring_boot.exception.CapitalLetterException;
 import com.okten.spring.test.spring_boot.service.IMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class MovieService implements IMovieService {
     public Movie insertMovie(Movie movie) {
         String firstSymbol = movie.getTitle().substring(0,1);
         if (!firstSymbol.equals(firstSymbol.toUpperCase()) || firstSymbol.matches("[-+]?\\d+")){
-            throw new RuntimeException("Title should start with capital letter");
+            throw  new CapitalLetterException("Title should start with capital letter");
         }
         return movieDao.save(movie);
     }

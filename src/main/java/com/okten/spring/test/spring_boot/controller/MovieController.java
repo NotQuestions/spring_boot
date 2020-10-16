@@ -2,21 +2,21 @@ package com.okten.spring.test.spring_boot.controller;
 
 import com.okten.spring.test.spring_boot.entity.Movie;
 import com.okten.spring.test.spring_boot.service.IMovieService;
-import com.okten.spring.test.spring_boot.validator.MovieValidator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class MovieController {
 
     private IMovieService movieService;
-    @Autowired
-    private MovieValidator movieValidator;
+//    @Autowired
+//    private MovieValidator movieValidator;
 
     @Autowired
     public MovieController(IMovieService movieService) {
@@ -37,7 +37,7 @@ public class MovieController {
     @PostMapping("/movies")
     @ResponseStatus(HttpStatus.CREATED)
     public Movie insertMovie(@RequestBody @Valid Movie movie) {
-
+        log.info("Handling Post /movie with object: " + movie);
         return movieService.insertMovie(movie);
     }
 
@@ -54,9 +54,9 @@ public class MovieController {
         movieService.remove(id);
     }
 
-    @InitBinder
-    public void initBinder(WebDataBinder webDataBinder){
-//    webDataBinder.addValidators(new MovieValidator());
-    webDataBinder.addValidators(movieValidator);
-    }
+//    @InitBinder
+//    public void initBinder(WebDataBinder webDataBinder){
+////    webDataBinder.addValidators(new MovieValidator());
+//    webDataBinder.addValidators(movieValidator);
+//    }
 }
