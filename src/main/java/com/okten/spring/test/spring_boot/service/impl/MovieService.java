@@ -1,4 +1,4 @@
-package com.okten.spring.test.spring_boot.service;
+package com.okten.spring.test.spring_boot.service.impl;
 
 import com.okten.spring.test.spring_boot.dao.MovieDao;
 import com.okten.spring.test.spring_boot.entity.Movie;

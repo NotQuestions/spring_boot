@@ -35,9 +35,9 @@ public class MovieController {
         //        return movieDao.findById(id).orElseThrow(() -> new RuntimeException("No movie with id"));
     }
 
-    @PostMapping("/movies")
+    @PostMapping("/movies/directors/{directorId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Movie insertMovie(@RequestBody @Valid Movie movie) {
+    public Movie insertMovie(@RequestBody @Valid Movie movie, @PathVariable int directorId) {
         log.info("Handling Post /movie with object: " + movie);
         return movieService.insertMovie(movie);
     }

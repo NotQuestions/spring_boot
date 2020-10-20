@@ -1,27 +1,33 @@
 package com.okten.spring.test.spring_boot.entity;
 
-
-import com.okten.spring.test.spring_boot.validator.UniqueMovieTitle;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
+@Entity
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handle", "fieldHandler"})
 public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false, length = 270)
-    @UniqueMovieTitle
+    @NotBlank
     private String title;
     @Positive
+    @Max(200)
     private int duration;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    private Director director;
 }
