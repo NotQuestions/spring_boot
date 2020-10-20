@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
+
 public class MovieController {
 
     private IMovieService movieService;
