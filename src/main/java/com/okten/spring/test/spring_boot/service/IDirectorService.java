@@ -15,4 +15,6 @@ public interface IDirectorService {
     Director update(Director director);
 
     void remove (int id);
+
+    Director getDirectorByName(String name);
 }

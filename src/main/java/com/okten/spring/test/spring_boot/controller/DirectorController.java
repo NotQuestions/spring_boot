@@ -23,7 +23,12 @@ public class DirectorController {
     }
 
     @GetMapping
-    public List<Director> getADirectors() {
+    public List<Director> getAllDirectors() {
         return  directorService.getDirectors();
+    }
+
+    @GetMapping("/{name}")
+    public Director getDirectorByName(@PathVariable String name) {
+        return directorService.getDirectorByName(name);
     }
 }

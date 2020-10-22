@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,7 +32,6 @@ public class Director {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "director_id")
-    @JsonIgnore
-    private Set<Movie> movies ;
+    private List<Movie> movies ;
 
 }
